@@ -7,11 +7,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sonofmagic/monorepo-template.git",
-    "directory": "packages/bar"
+    "url": "git+https://github.com/sonofmagic/perfect-sticky-scrollbar.git",
+    "directory": "packages/perfect-sticky-scrollbar"
   },
   "bugs": {
-    "url": "https://github.com/sonofmagic/monorepo-template/issues"
+    "url": "https://github.com/sonofmagic/perfect-sticky-scrollbar/issues"
   },
   "keywords": [],
   "sideEffects": false,
