@@ -1,8 +1,8 @@
-export function get(element) {
+export function get(element: HTMLElement) {
   return getComputedStyle(element)
 }
 
-export function set(element, obj) {
+export function set(element: HTMLElement, obj: CSSStyleDeclaration) {
   for (const key in obj) {
     let val = obj[key]
     if (typeof val === 'number') {

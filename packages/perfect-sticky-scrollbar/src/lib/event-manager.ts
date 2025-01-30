@@ -1,10 +1,15 @@
 class EventElement {
-  constructor(element) {
+  element: Element
+  handlers: {
+    [key: string]: Array<EventListener>
+  }
+
+  constructor(element: Element) {
     this.element = element
     this.handlers = {}
   }
 
-  bind(eventName, handler) {
+  bind(eventName: string, handler: EventListener) {
     if (typeof this.handlers[eventName] === 'undefined') {
       this.handlers[eventName] = []
     }
@@ -12,7 +17,7 @@ class EventElement {
     this.element.addEventListener(eventName, handler, false)
   }
 
-  unbind(eventName, target) {
+  unbind(eventName: string, target?: EventListener) {
     this.handlers[eventName] = this.handlers[eventName].filter((handler) => {
       if (target && handler !== target) {
         return true
@@ -36,11 +41,12 @@ class EventElement {
 }
 
 export default class EventManager {
+  eventElements: EventElement[]
   constructor() {
     this.eventElements = []
   }
 
-  eventElement(element) {
+  eventElement(element: Element) {
     let ee = this.eventElements.filter(ee => ee.element === element)[0]
     if (!ee) {
       ee = new EventElement(element)
@@ -49,11 +55,11 @@ export default class EventManager {
     return ee
   }
 
-  bind(element, eventName, handler) {
+  bind(element: Element, eventName: string, handler: EventListener) {
     this.eventElement(element).bind(eventName, handler)
   }
 
-  unbind(element, eventName, handler) {
+  unbind(element: Element, eventName: string, handler: EventListener) {
     const ee = this.eventElement(element)
     ee.unbind(eventName, handler)
 
@@ -68,9 +74,9 @@ export default class EventManager {
     this.eventElements = []
   }
 
-  once(element, eventName, handler) {
+  once(element: Element, eventName: string, handler: EventListener) {
     const ee = this.eventElement(element)
-    const onceHandler = (evt) => {
+    const onceHandler = (evt: Event) => {
       ee.unbind(eventName, onceHandler)
       handler(evt)
     }
