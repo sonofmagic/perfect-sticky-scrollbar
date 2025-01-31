@@ -1,9 +1,10 @@
+import type PerfectScrollbar from '.'
 import cls from './lib/class-names'
 import * as CSS from './lib/css'
 import * as DOM from './lib/dom'
 import { toInt } from './lib/util'
 
-export default function (i) {
+export default function (i: PerfectScrollbar) {
   const element = i.element
   const roundedScrollTop = Math.floor(element.scrollTop)
   const rect = element.getBoundingClientRect()

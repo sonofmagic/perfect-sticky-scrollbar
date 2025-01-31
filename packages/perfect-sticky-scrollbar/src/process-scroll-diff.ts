@@ -1,6 +1,6 @@
 import { setScrollingClassInstantly } from './lib/class-names'
 
-function createEvent(name) {
+function createEvent(name: string) {
   if (typeof window.CustomEvent === 'function') {
     return new CustomEvent(name)
   }

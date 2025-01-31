@@ -38,9 +38,54 @@ const handlers = {
 }
 
 export default class PerfectScrollbar {
-  constructor(element, userSettings = {}) {
+  element: Element | null
+  settings: ReturnType<typeof defaultSettings>
+  containerWidth: number | null
+  containerHeight: number | null
+  contentWidth: number | null
+  contentHeight: number | null
+  isAlive: boolean | null
+  isRtl: boolean
+  isNegativeScroll: boolean
+  negativeScrollAdjustment: number
+  event: EventManager
+  ownerDocument: Document
+  scrollbarXRail: HTMLDivElement | null
+  scrollbarX: HTMLDivElement | null
+  scrollbarXActive: boolean | null
+  scrollbarXWidth: number | null
+  scrollbarXLeft: number | null
+  scrollbarXBottom: number
+  isScrollbarXUsingBottom: boolean
+  scrollbarXTop!: number
+  railBorderXWidth: number
+  railXMarginWidth: number
+  railXWidth: number | null
+  railXRatio: number | null
+
+  scrollbarYRail: HTMLDivElement | null
+  scrollbarY: HTMLDivElement | null
+  scrollbarYActive: boolean | null
+  scrollbarYHeight: number | null
+  scrollbarYTop: number | null
+  scrollbarYLeft!: number
+  isScrollbarYUsingRight: boolean
+  scrollbarYRight: number
+  railBorderYWidth: number
+  scrollbarYOuterWidth: number | null
+  railYMarginHeight: number
+  railYHeight: number | null
+  railYRatio: number | null
+  reach: {
+    x: 'start' | 'end' | null
+    y: 'start' | 'end' | null
+  }
+
+  lastScrollTop: number
+  lastScrollLeft: number
+  constructor(element: Element | string, userSettings = {}) {
     if (typeof element === 'string') {
-      element = document.querySelector(element)
+      element = document.querySelector(element) as Element
     }
 
     if (!element || !element.nodeName) {
@@ -86,7 +131,7 @@ export default class PerfectScrollbar {
     element.appendChild(this.scrollbarXRail)
     this.scrollbarX = DOM.div(cls.element.thumb('x'))
     this.scrollbarXRail.appendChild(this.scrollbarX)
-    this.scrollbarX.setAttribute('tabindex', 0)
+    this.scrollbarX.setAttribute('tabindex', '0')
     this.event.bind(this.scrollbarX, 'focus', focus)
     this.event.bind(this.scrollbarX, 'blur', blur)
     this.scrollbarXActive = null
@@ -144,13 +189,13 @@ export default class PerfectScrollbar {
       x:
         element.scrollLeft <= 0
           ? 'start'
-          : element.scrollLeft >= this.contentWidth - this.containerWidth
+          : element.scrollLeft >= this.contentWidth! - this.containerWidth!
             ? 'end'
             : null,
       y:
         element.scrollTop <= 0
           ? 'start'
-          : element.scrollTop >= this.contentHeight - this.containerHeight
+          : element.scrollTop >= this.contentHeight! - this.containerHeight!
             ? 'end'
             : null,
     }
@@ -172,30 +217,30 @@ export default class PerfectScrollbar {
 
     // Recalcuate negative scrollLeft adjustment
     this.negativeScrollAdjustment = this.isNegativeScroll
-      ? this.element.scrollWidth - this.element.clientWidth
+      ? this.element!.scrollWidth - this.element!.clientWidth
       : 0
 
     // Recalculate rail margins
-    CSS.set(this.scrollbarXRail, { display: 'block' })
-    CSS.set(this.scrollbarYRail, { display: 'block' })
+    CSS.set(this.scrollbarXRail!, { display: 'block' })
+    CSS.set(this.scrollbarYRail!, { display: 'block' })
     this.railXMarginWidth
-      = toInt(CSS.get(this.scrollbarXRail).marginLeft)
-        + toInt(CSS.get(this.scrollbarXRail).marginRight)
+      = toInt(CSS.get(this.scrollbarXRail!).marginLeft)
+        + toInt(CSS.get(this.scrollbarXRail!).marginRight)
     this.railYMarginHeight
-      = toInt(CSS.get(this.scrollbarYRail).marginTop)
-        + toInt(CSS.get(this.scrollbarYRail).marginBottom)
+      = toInt(CSS.get(this.scrollbarYRail!).marginTop)
+        + toInt(CSS.get(this.scrollbarYRail!).marginBottom)
 
     // Hide scrollbars not to affect scrollWidth and scrollHeight
-    CSS.set(this.scrollbarXRail, { display: 'none' })
-    CSS.set(this.scrollbarYRail, { display: 'none' })
+    CSS.set(this.scrollbarXRail!, { display: 'none' })
+    CSS.set(this.scrollbarYRail!, { display: 'none' })
 
     updateGeometry(this)
 
     processScrollDiff(this, 'top', 0, false, true)
     processScrollDiff(this, 'left', 0, false, true)
 
-    CSS.set(this.scrollbarXRail, { display: '' })
-    CSS.set(this.scrollbarYRail, { display: '' })
+    CSS.set(this.scrollbarXRail!, { display: '' })
+    CSS.set(this.scrollbarYRail!, { display: '' })
   }
 
   onScroll(e) {
@@ -204,15 +249,15 @@ export default class PerfectScrollbar {
     }
 
     updateGeometry(this)
-    processScrollDiff(this, 'top', this.element.scrollTop - this.lastScrollTop)
+    processScrollDiff(this, 'top', this.element!.scrollTop - this.lastScrollTop)
     processScrollDiff(
       this,
       'left',
-      this.element.scrollLeft - this.lastScrollLeft,
+      this.element!.scrollLeft - this.lastScrollLeft,
     )
 
-    this.lastScrollTop = Math.floor(this.element.scrollTop)
-    this.lastScrollLeft = this.element.scrollLeft
+    this.lastScrollTop = Math.floor(this.element!.scrollTop)
+    this.lastScrollLeft = this.element!.scrollLeft
   }
 
   destroy() {
@@ -221,10 +266,10 @@ export default class PerfectScrollbar {
     }
 
     this.event.unbindAll()
-    DOM.remove(this.scrollbarX)
-    DOM.remove(this.scrollbarY)
-    DOM.remove(this.scrollbarXRail)
-    DOM.remove(this.scrollbarYRail)
+    DOM.remove(this.scrollbarX!)
+    DOM.remove(this.scrollbarY!)
+    DOM.remove(this.scrollbarXRail!)
+    DOM.remove(this.scrollbarYRail!)
     this.removePsClasses()
 
     // unset elements
@@ -238,7 +283,8 @@ export default class PerfectScrollbar {
   }
 
   removePsClasses() {
-    this.element.className = this.element.className
+    this.element!.className = this.element!
+      .className
       .split(' ')
       .filter(name => !name.match(/^ps([-_].+|)$/))
       .join(' ')

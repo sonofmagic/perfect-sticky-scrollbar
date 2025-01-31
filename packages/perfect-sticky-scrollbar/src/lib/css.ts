@@ -1,4 +1,4 @@
-export function get(element: HTMLElement) {
+export function get(element: Element) {
   return getComputedStyle(element)
 }
 
