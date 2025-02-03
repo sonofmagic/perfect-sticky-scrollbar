@@ -1,3 +1,4 @@
+import type { RemoveNull } from '@/types'
 import type PerfectScrollbar from '..'
 
 const cls = {
@@ -23,7 +24,7 @@ export default cls
  */
 const scrollingClassTimeout: { x?: number, y?: number } = { x: undefined, y: undefined }
 
-export function addScrollingClass(i: PerfectScrollbar, x: 'x' | 'y') {
+export function addScrollingClass(i: RemoveNull<PerfectScrollbar>, x: 'x' | 'y') {
   const classList = i.element.classList
   const className = cls.state.scrolling(x)
 
@@ -35,14 +36,14 @@ export function addScrollingClass(i: PerfectScrollbar, x: 'x' | 'y') {
   }
 }
 
-export function removeScrollingClass(i: PerfectScrollbar, x: 'x' | 'y') {
+export function removeScrollingClass(i: RemoveNull<PerfectScrollbar>, x: 'x' | 'y') {
   scrollingClassTimeout[x] = window.setTimeout(
     () => i.isAlive && i.element.classList.remove(cls.state.scrolling(x)),
     i.settings.scrollingThreshold,
   )
 }
 
-export function setScrollingClassInstantly(i: PerfectScrollbar, x: 'x' | 'y') {
+export function setScrollingClassInstantly(i: RemoveNull<PerfectScrollbar>, x: 'x' | 'y') {
   addScrollingClass(i, x)
   removeScrollingClass(i, x)
 }

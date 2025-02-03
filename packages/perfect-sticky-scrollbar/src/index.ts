@@ -1,11 +1,12 @@
+import type { RemoveNull } from './types'
 import clickRail from './handlers/click-rail'
 import dragThumb from './handlers/drag-thumb'
 import keyboard from './handlers/keyboard'
 import wheel from './handlers/mouse-wheel'
 import touch from './handlers/touch'
 import cls from './lib/class-names'
-import * as CSS from './lib/css'
 
+import * as CSS from './lib/css'
 import * as DOM from './lib/dom'
 import EventManager from './lib/event-manager'
 import { outerWidth, toInt } from './lib/util'
@@ -160,7 +161,7 @@ export default class PerfectScrollbar {
     element.appendChild(this.scrollbarYRail)
     this.scrollbarY = DOM.div(cls.element.thumb('y'))
     this.scrollbarYRail.appendChild(this.scrollbarY)
-    this.scrollbarY.setAttribute('tabindex', 0)
+    this.scrollbarY.setAttribute('tabindex', '0')
     this.event.bind(this.scrollbarY, 'focus', focus)
     this.event.bind(this.scrollbarY, 'blur', blur)
     this.scrollbarYActive = null
@@ -207,7 +208,7 @@ export default class PerfectScrollbar {
     this.lastScrollTop = Math.floor(element.scrollTop) // for onScroll only
     this.lastScrollLeft = element.scrollLeft // for onScroll only
     this.event.bind(this.element, 'scroll', e => this.onScroll(e))
-    updateGeometry(this)
+    updateGeometry(this as RemoveNull<PerfectScrollbar>)
   }
 
   update() {
@@ -234,24 +235,24 @@ export default class PerfectScrollbar {
     CSS.set(this.scrollbarXRail!, { display: 'none' })
     CSS.set(this.scrollbarYRail!, { display: 'none' })
 
-    updateGeometry(this)
+    updateGeometry(this as RemoveNull<PerfectScrollbar>)
 
-    processScrollDiff(this, 'top', 0, false, true)
-    processScrollDiff(this, 'left', 0, false, true)
+    processScrollDiff(this as RemoveNull<PerfectScrollbar>, 'top', 0, false, true)
+    processScrollDiff(this as RemoveNull<PerfectScrollbar>, 'left', 0, false, true)
 
     CSS.set(this.scrollbarXRail!, { display: '' })
     CSS.set(this.scrollbarYRail!, { display: '' })
   }
 
-  onScroll(e) {
+  onScroll(_e: Event) {
     if (!this.isAlive) {
       return
     }
 
-    updateGeometry(this)
-    processScrollDiff(this, 'top', this.element!.scrollTop - this.lastScrollTop)
+    updateGeometry(this as RemoveNull<PerfectScrollbar>)
+    processScrollDiff(this as RemoveNull<PerfectScrollbar>, 'top', this.element!.scrollTop - this.lastScrollTop)
     processScrollDiff(
-      this,
+      this as RemoveNull<PerfectScrollbar>,
       'left',
       this.element!.scrollLeft - this.lastScrollLeft,
     )

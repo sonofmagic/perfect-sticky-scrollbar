@@ -1,10 +1,11 @@
 import type PerfectScrollbar from '.'
+import type { RemoveNull } from './types'
 import cls from './lib/class-names'
 import * as CSS from './lib/css'
 import * as DOM from './lib/dom'
 import { toInt } from './lib/util'
 
-export default function (i: PerfectScrollbar) {
+export default function updateGeometry(i: RemoveNull<PerfectScrollbar>) {
   const element = i.element
   const roundedScrollTop = Math.floor(element.scrollTop)
   const rect = element.getBoundingClientRect()
@@ -100,7 +101,7 @@ export default function (i: PerfectScrollbar) {
   }
 }
 
-function getThumbSize(i, thumbSize) {
+function getThumbSize(i: RemoveNull<PerfectScrollbar>, thumbSize: number) {
   if (i.settings.minScrollbarLength) {
     thumbSize = Math.max(thumbSize, i.settings.minScrollbarLength)
   }
@@ -110,8 +111,13 @@ function getThumbSize(i, thumbSize) {
   return thumbSize
 }
 
-function updateCss(element, i) {
-  const xRailOffset = { width: i.railXWidth }
+function updateCss(element: Element, i: RemoveNull<PerfectScrollbar>) {
+  const xRailOffset: {
+    width: number
+    left?: number
+    bottom?: number
+    top?: number
+  } = { width: i.railXWidth }
   const roundedScrollTop = Math.floor(element.scrollTop)
 
   if (i.isRtl) {
@@ -132,7 +138,12 @@ function updateCss(element, i) {
   }
   CSS.set(i.scrollbarXRail, xRailOffset)
 
-  const yRailOffset = { top: roundedScrollTop, height: i.railYHeight }
+  const yRailOffset: {
+    left?: number
+    right?: number
+    top: number
+    height: number
+  } = { top: roundedScrollTop, height: i.railYHeight }
   if (i.isScrollbarYUsingRight) {
     if (i.isRtl) {
       yRailOffset.right

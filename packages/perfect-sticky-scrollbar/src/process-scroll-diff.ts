@@ -1,3 +1,5 @@
+import type PerfectScrollbar from '.'
+import type { RemoveNull } from './types'
 import { setScrollingClassInstantly } from './lib/class-names'
 
 function createEvent(name: string) {
@@ -10,14 +12,23 @@ function createEvent(name: string) {
   return evt
 }
 
+type Fields = [
+  'contentHeight' | 'contentWidth',
+  'containerHeight' | 'containerWidth',
+  'scrollTop' | 'scrollLeft',
+  'x' | 'y',
+  'up' | 'left',
+  'right' | 'down',
+]
+
 export default function (
-  i,
-  axis,
-  diff,
+  i: RemoveNull<PerfectScrollbar>,
+  axis: string,
+  diff: number,
   useScrollingClass = true,
   forceFireReachEvent = false,
 ) {
-  let fields
+  let fields: Fields
   if (axis === 'top') {
     fields = [
       'contentHeight',
@@ -26,7 +37,7 @@ export default function (
       'y',
       'up',
       'down',
-    ]
+    ] as const
   }
   else if (axis === 'left') {
     fields = [
@@ -36,7 +47,7 @@ export default function (
       'x',
       'left',
       'right',
-    ]
+    ] as const
   }
   else {
     throw new Error('A proper axis should be provided')
@@ -46,9 +57,9 @@ export default function (
 }
 
 function processScrollDiff(
-  i,
-  diff,
-  [contentHeight, containerHeight, scrollTop, y, up, down],
+  i: RemoveNull<PerfectScrollbar>,
+  diff: number,
+  [contentHeight, containerHeight, scrollTop, y, up, down]: Fields,
   useScrollingClass = true,
   forceFireReachEvent = false,
 ) {

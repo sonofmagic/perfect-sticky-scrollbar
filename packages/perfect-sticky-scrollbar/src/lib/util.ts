@@ -1,7 +1,8 @@
 import * as CSS from './css'
 import * as DOM from './dom'
 
-export function toInt(x: string) {
+export function toInt(x: string | number) {
+  // @ts-ignore
   return Number.parseInt(x, 10) || 0
 }
 
