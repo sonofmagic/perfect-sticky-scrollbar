@@ -1,0 +1,19 @@
+{
+  "name": "website",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "perfect-sticky-scrollbar": "workspace:*",
+    "vitepress": "^1.6.3"
+  }
+}
