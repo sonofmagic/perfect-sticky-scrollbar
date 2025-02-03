@@ -1,11 +1,10 @@
-import type PerfectScrollbar from '.'
-import type { RemoveNull } from './types'
+import type { RequiredPerfectScrollbar } from './types'
 import cls from './lib/class-names'
 import * as CSS from './lib/css'
 import * as DOM from './lib/dom'
 import { toInt } from './lib/util'
 
-export default function updateGeometry(i: RemoveNull<PerfectScrollbar>) {
+export default function updateGeometry(i: RequiredPerfectScrollbar) {
   const element = i.element
   const roundedScrollTop = Math.floor(element.scrollTop)
   const rect = element.getBoundingClientRect()
@@ -101,7 +100,7 @@ export default function updateGeometry(i: RemoveNull<PerfectScrollbar>) {
   }
 }
 
-function getThumbSize(i: RemoveNull<PerfectScrollbar>, thumbSize: number) {
+function getThumbSize(i: RequiredPerfectScrollbar, thumbSize: number) {
   if (i.settings.minScrollbarLength) {
     thumbSize = Math.max(thumbSize, i.settings.minScrollbarLength)
   }
@@ -111,7 +110,7 @@ function getThumbSize(i: RemoveNull<PerfectScrollbar>, thumbSize: number) {
   return thumbSize
 }
 
-function updateCss(element: Element, i: RemoveNull<PerfectScrollbar>) {
+function updateCss(element: Element, i: RequiredPerfectScrollbar) {
   const xRailOffset: {
     width: number
     left?: number

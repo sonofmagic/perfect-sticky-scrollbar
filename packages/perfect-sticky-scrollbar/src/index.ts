@@ -1,4 +1,4 @@
-import type { RemoveNull } from './types'
+import type { RequiredPerfectScrollbar } from './types'
 import clickRail from './handlers/click-rail'
 import dragThumb from './handlers/drag-thumb'
 import keyboard from './handlers/keyboard'
@@ -208,7 +208,7 @@ export default class PerfectScrollbar {
     this.lastScrollTop = Math.floor(element.scrollTop) // for onScroll only
     this.lastScrollLeft = element.scrollLeft // for onScroll only
     this.event.bind(this.element, 'scroll', e => this.onScroll(e))
-    updateGeometry(this as RemoveNull<PerfectScrollbar>)
+    updateGeometry(this as RequiredPerfectScrollbar)
   }
 
   update() {
@@ -235,10 +235,10 @@ export default class PerfectScrollbar {
     CSS.set(this.scrollbarXRail!, { display: 'none' })
     CSS.set(this.scrollbarYRail!, { display: 'none' })
 
-    updateGeometry(this as RemoveNull<PerfectScrollbar>)
+    updateGeometry(this as RequiredPerfectScrollbar)
 
-    processScrollDiff(this as RemoveNull<PerfectScrollbar>, 'top', 0, false, true)
-    processScrollDiff(this as RemoveNull<PerfectScrollbar>, 'left', 0, false, true)
+    processScrollDiff(this as RequiredPerfectScrollbar, 'top', 0, false, true)
+    processScrollDiff(this as RequiredPerfectScrollbar, 'left', 0, false, true)
 
     CSS.set(this.scrollbarXRail!, { display: '' })
     CSS.set(this.scrollbarYRail!, { display: '' })
@@ -249,10 +249,10 @@ export default class PerfectScrollbar {
       return
     }
 
-    updateGeometry(this as RemoveNull<PerfectScrollbar>)
-    processScrollDiff(this as RemoveNull<PerfectScrollbar>, 'top', this.element!.scrollTop - this.lastScrollTop)
+    updateGeometry(this as RequiredPerfectScrollbar)
+    processScrollDiff(this as RequiredPerfectScrollbar, 'top', this.element!.scrollTop - this.lastScrollTop)
     processScrollDiff(
-      this as RemoveNull<PerfectScrollbar>,
+      this as RequiredPerfectScrollbar,
       'left',
       this.element!.scrollLeft - this.lastScrollLeft,
     )

@@ -1,15 +1,16 @@
+import type { RequiredPerfectScrollbar } from '@/types'
 import * as DOM from '../lib/dom'
 import { isEditable } from '../lib/util'
 import updateGeometry from '../update-geometry'
 
-export default function (i) {
+export default function (i: RequiredPerfectScrollbar) {
   const element = i.element
 
   const elementHovered = () => DOM.matches(element, ':hover')
   const scrollbarFocused = () =>
     DOM.matches(i.scrollbarX, ':focus') || DOM.matches(i.scrollbarY, ':focus')
 
-  function shouldPreventDefault(deltaX, deltaY) {
+  function shouldPreventDefault(deltaX: number, deltaY: number) {
     const scrollTop = Math.floor(element.scrollTop)
     if (deltaX === 0) {
       if (!i.scrollbarYActive) {

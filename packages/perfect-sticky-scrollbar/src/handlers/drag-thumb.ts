@@ -1,12 +1,25 @@
+import type { RequiredPerfectScrollbar } from '@/types'
 import cls, {
   addScrollingClass,
   removeScrollingClass,
 } from '../lib/class-names'
 import updateGeometry from '../update-geometry'
 
-let activeSlider = null // Variable to track the currently active slider
+let activeSlider: 'scrollbarX' | 'scrollbarY' | null = null // Variable to track the currently active slider
 
-export default function setupScrollHandlers(i) {
+type Fields = [
+  'containerHeight' | 'containerWidth',
+  'contentHeight' | 'contentWidth',
+  'pageY' | 'pageX',
+  'railYHeight' | 'railXWidth',
+  'scrollbarY' | 'scrollbarX',
+  'scrollbarYHeight' | 'scrollbarXWidth',
+  'scrollTop' | 'scrollLeft',
+  'y' | 'x',
+  'scrollbarYRail' | 'scrollbarXRail',
+]
+
+export default function setupScrollHandlers(i: RequiredPerfectScrollbar) {
   bindMouseScrollHandler(i, [
     'containerHeight',
     'contentHeight',
@@ -33,7 +46,7 @@ export default function setupScrollHandlers(i) {
 }
 
 function bindMouseScrollHandler(
-  i,
+  i: RequiredPerfectScrollbar,
   [
     containerDimension,
     contentDimension,
@@ -44,7 +57,7 @@ function bindMouseScrollHandler(
     scrollAxis,
     axis,
     scrollbarRail,
-  ],
+  ]: Fields,
 ) {
   const element = i.element
   let startingScrollPosition = null
@@ -79,7 +92,7 @@ function bindMouseScrollHandler(
     activeSlider = null // Reset active slider when interaction ends
   }
 
-  function bindMoves(e) {
+  function bindMoves(e: Event) {
     if (activeSlider === null) {
       // Only bind if no slider is currently active
       activeSlider = scrollbarAxis // Set current slider as active

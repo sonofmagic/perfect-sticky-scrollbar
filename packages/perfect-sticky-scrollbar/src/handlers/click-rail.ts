@@ -1,11 +1,13 @@
+import type { RequiredPerfectScrollbar } from '@/types'
 import updateGeometry from '../update-geometry'
 
-export default function (i) {
+export default function (i: RequiredPerfectScrollbar) {
   // const element = i.element;
 
   i.event.bind(i.scrollbarY, 'mousedown', e => e.stopPropagation())
   i.event.bind(i.scrollbarYRail, 'mousedown', (e) => {
     const positionTop
+    // @ts-ignore
       = e.pageY
         - window.pageYOffset
         - i.scrollbarYRail.getBoundingClientRect().top
@@ -20,6 +22,7 @@ export default function (i) {
   i.event.bind(i.scrollbarX, 'mousedown', e => e.stopPropagation())
   i.event.bind(i.scrollbarXRail, 'mousedown', (e) => {
     const positionLeft
+    // @ts-ignore
       = e.pageX
         - window.pageXOffset
         - i.scrollbarXRail.getBoundingClientRect().left

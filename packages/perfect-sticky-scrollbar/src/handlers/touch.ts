@@ -1,9 +1,10 @@
+import type { RequiredPerfectScrollbar } from '@/types'
 import cls from '../lib/class-names'
 import * as CSS from '../lib/css'
 import { env } from '../lib/util'
 import updateGeometry from '../update-geometry'
 
-export default function (i) {
+export default function (i: RequiredPerfectScrollbar) {
   if (!env.supportsTouch && !env.supportsIePointer) {
     return
   }
@@ -17,7 +18,7 @@ export default function (i) {
     easingLoop: null,
   }
 
-  function shouldPrevent(deltaX, deltaY) {
+  function shouldPrevent(deltaX: number, deltaY: number) {
     const scrollTop = Math.floor(element.scrollTop)
     const scrollLeft = element.scrollLeft
     const magnitudeX = Math.abs(deltaX)

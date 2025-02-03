@@ -1,14 +1,15 @@
+import type { RequiredPerfectScrollbar } from '@/types'
 import cls from '../lib/class-names'
 import * as CSS from '../lib/css'
 import { env } from '../lib/util'
 import updateGeometry from '../update-geometry'
 
-export default function (i) {
-  const element = i.element
+export default function (i: RequiredPerfectScrollbar) {
+  const element = i.element as HTMLElement
 
-  const shouldPrevent = false
+  // const shouldPrevent = false
 
-  function shouldPreventDefault(deltaX, deltaY) {
+  function shouldPreventDefault(deltaX: number, deltaY: number) {
     const roundedScrollTop = Math.floor(element.scrollTop)
     const isTop = element.scrollTop === 0
     const isBottom
@@ -30,7 +31,8 @@ export default function (i) {
     return hitsBound ? !i.settings.wheelPropagation : true
   }
 
-  function getDeltaFromEvent(e) {
+  function getDeltaFromEvent(e: Event) {
+    // const wheelEvent = e as WheelEvent
     let deltaX = e.deltaX
     let deltaY = -1 * e.deltaY
 
@@ -59,7 +61,7 @@ export default function (i) {
     return [deltaX, deltaY]
   }
 
-  function shouldBeConsumedByChild(target, deltaX, deltaY) {
+  function shouldBeConsumedByChild(target: EventTarget | null, deltaX: number, deltaY: number) {
     // FIXME: this is a workaround for <select> issue in FF and IE #571
     if (!env.isWebKit && element.querySelector('select:focus')) {
       return true
@@ -109,7 +111,7 @@ export default function (i) {
     return false
   }
 
-  function mousewheelHandler(e) {
+  function mousewheelHandler(e: Event) {
     const [deltaX, deltaY] = getDeltaFromEvent(e)
 
     if (shouldBeConsumedByChild(e.target, deltaX, deltaY)) {

@@ -46,16 +46,17 @@ export default class EventManager {
     this.eventElements = []
   }
 
-  eventElement(element: Element) {
+  eventElement(element: Element | Document) {
     let ee = this.eventElements.filter(ee => ee.element === element)[0]
     if (!ee) {
+      // @ts-ignore
       ee = new EventElement(element)
       this.eventElements.push(ee)
     }
     return ee
   }
 
-  bind(element: Element, eventName: string, handler: EventListener) {
+  bind(element: Element | Document, eventName: string, handler: EventListener) {
     this.eventElement(element).bind(eventName, handler)
   }
 

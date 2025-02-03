@@ -1,5 +1,4 @@
-import type PerfectScrollbar from '.'
-import type { RemoveNull } from './types'
+import type { RequiredPerfectScrollbar } from './types'
 import { setScrollingClassInstantly } from './lib/class-names'
 
 function createEvent(name: string) {
@@ -22,7 +21,7 @@ type Fields = [
 ]
 
 export default function (
-  i: RemoveNull<PerfectScrollbar>,
+  i: RequiredPerfectScrollbar,
   axis: string,
   diff: number,
   useScrollingClass = true,
@@ -57,7 +56,7 @@ export default function (
 }
 
 function processScrollDiff(
-  i: RemoveNull<PerfectScrollbar>,
+  i: RequiredPerfectScrollbar,
   diff: number,
   [contentHeight, containerHeight, scrollTop, y, up, down]: Fields,
   useScrollingClass = true,
