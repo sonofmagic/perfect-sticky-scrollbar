@@ -99,6 +99,7 @@ export default class PerfectScrollbar {
 
     this.settings = defaultSettings()
     for (const key in userSettings) {
+      // @ts-ignore
       this.settings[key] = userSettings[key]
     }
 
@@ -203,7 +204,10 @@ export default class PerfectScrollbar {
 
     this.isAlive = true
 
-    this.settings.handlers.forEach(handlerName => handlers[handlerName](this))
+    this.settings.handlers.forEach(
+      // @ts-ignore
+      handlerName => handlers[handlerName](this),
+    )
 
     this.lastScrollTop = Math.floor(element.scrollTop) // for onScroll only
     this.lastScrollLeft = element.scrollLeft // for onScroll only
@@ -287,7 +291,7 @@ export default class PerfectScrollbar {
     this.element!.className = this.element!
       .className
       .split(' ')
-      .filter(name => !name.match(/^ps([-_].+|)$/))
+      .filter(name => !name.match(/^ps((?:[-_].+)?)$/))
       .join(' ')
   }
 }
