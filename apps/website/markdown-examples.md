@@ -8,29 +8,70 @@ VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shi
 
 **Input**
 
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
+<script setup>
+import { ref } from 'vue'
+import perfectStickyScrollbar from '../../packages/perfect-sticky-scrollbar'
+import { ElTable, ElTableColumn } from 'element-plus'
+import 'element-plus/dist/index.css'
 
-**Output**
+const tableData = [
+  {
+    date: '2016-05-03',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-04',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-01',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+    {
+    date: '2016-05-03',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-04',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-01',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+]
+</script>
 
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
+## Markdown Content
+
+<el-table :data="tableData" style="width: 100%; height: 250px">
+  <el-table-column prop="date" label="Date" width="180" />
+  <el-table-column prop="name" label="Name" width="180" />
+  <el-table-column prop="address" label="Address" />
+</el-table>
+
+<style module>
+.button {
+  color: red;
+  font-weight: bold;
 }
-```
+</style>
 
 ## Custom Containers
 
@@ -54,8 +95,11 @@ This is a dangerous warning.
 :::
 
 ::: details
-This is a details block.
+Thi
+s i
+s a details block.
 :::
+
 ```
 
 **Output**

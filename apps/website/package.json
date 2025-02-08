@@ -15,5 +15,8 @@
   "devDependencies": {
     "perfect-sticky-scrollbar": "workspace:*",
     "vitepress": "^1.6.3"
+  },
+  "dependencies": {
+    "element-plus": "^2.9.4"
   }
 }
