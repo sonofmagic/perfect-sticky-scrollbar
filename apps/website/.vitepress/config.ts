@@ -22,6 +22,7 @@ export default defineConfig({
           { text: 'always-visible', link: '/examples/always-visible' },
           { text: 'sticky', link: '/examples/sticky' },
           { text: 'table', link: '/examples/table' },
+          { text: 'native-sticky', link: '/examples/native-sticky' },
         ],
       },
     ],
