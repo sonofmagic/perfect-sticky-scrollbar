@@ -2,7 +2,7 @@
   "name": "perfect-sticky-scrollbar",
   "type": "module",
   "version": "0.0.0",
-  "description": "tsup(esbuild) build package template",
+  "description": "perfect-sticky-scrollbar",
   "author": "ice breaker <1324318532@qq.com>",
   "license": "MIT",
   "repository": {

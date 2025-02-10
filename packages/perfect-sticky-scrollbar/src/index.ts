@@ -27,6 +27,10 @@ function defaultSettings() {
     useBothWheelAxes: false,
     wheelPropagation: true,
     wheelSpeed: 1,
+    stickyXScrollbar: false,
+    stickyYScrollbar: false,
+    stickyXScrollbarOffset: 0,
+    stickyYScrollbarOffset: 0,
   }
 }
 
@@ -84,7 +88,7 @@ export default class PerfectScrollbar {
 
   lastScrollTop: number
   lastScrollLeft: number
-  constructor(element: Element | string, userSettings = {}) {
+  constructor(element: Element | string, userSettings: Partial<ReturnType<typeof defaultSettings>> = {}) {
     if (typeof element === 'string') {
       element = document.querySelector(element) as Element
     }

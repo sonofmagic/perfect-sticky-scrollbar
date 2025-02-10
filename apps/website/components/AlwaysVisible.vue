@@ -7,8 +7,7 @@ import 'perfect-sticky-scrollbar/style.css'
 const demo = useTemplateRef('demo')
 
 onMounted(() => {
-  console.log(demo.value)
-  if (demo.value.dom) {
+  if (demo.value?.dom) {
     const ps = new PerfectScrollbar(demo.value.dom)
     console.log(ps)
   }
