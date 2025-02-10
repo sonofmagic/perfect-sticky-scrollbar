@@ -1,6 +1,8 @@
 import tailwindcss from '@tailwindcss/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vitepress'
-
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'perfect-sticky-scrollbar',
@@ -19,6 +21,7 @@ export default defineConfig({
         items: [
           { text: 'always-visible', link: '/examples/always-visible' },
           { text: 'sticky', link: '/examples/sticky' },
+          { text: 'table', link: '/examples/table' },
         ],
       },
     ],
@@ -30,6 +33,12 @@ export default defineConfig({
   vite: {
     plugins: [
       tailwindcss(),
+      AutoImport({
+        resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
+      }),
     ],
   },
 })

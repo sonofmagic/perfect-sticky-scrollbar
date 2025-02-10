@@ -21,8 +21,5 @@ onMounted(() => {
 </template>
 
 <style>
-.ps__rail-x,
-.ps__rail-y {
-  opacity: 0.6;
-}
+
 </style>
