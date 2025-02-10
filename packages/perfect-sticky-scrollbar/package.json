@@ -16,9 +16,11 @@
   "keywords": [],
   "sideEffects": false,
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./style.css": "./css/perfect-scrollbar.css"
   },
   "files": [
+    "css",
     "dist"
   ],
   "scripts": {
@@ -36,7 +38,8 @@
         "types": "./dist/index.d.ts",
         "import": "./dist/index.js",
         "require": "./dist/index.cjs"
-      }
+      },
+      "./style.css": "./css/perfect-scrollbar.css"
     },
     "main": "./dist/index.cjs",
     "module": "./dist/index.js",

@@ -5,14 +5,11 @@ layout: home
 hero:
   name: "perfect-sticky-scrollbar"
   text: "perfect-sticky-scrollbar"
-  tagline: My great project tagline
+  tagline: perfect-sticky-scrollbar
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Examples
+      link: /examples
 
 features:
   - title: Feature A

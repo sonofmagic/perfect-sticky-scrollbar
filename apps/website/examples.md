@@ -99,7 +99,6 @@ Thi
 s i
 s a details block.
 :::
-
 ```
 
 **Output**

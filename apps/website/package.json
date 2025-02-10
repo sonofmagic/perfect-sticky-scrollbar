@@ -3,8 +3,16 @@
   "type": "module",
   "version": "1.0.0",
   "description": "",
-  "author": "",
+  "author": "ice breaker <1324318532@qq.com>",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonofmagic/perfect-sticky-scrollbar.git",
+    "directory": "apps/website"
+  },
+  "bugs": {
+    "url": "https://github.com/sonofmagic/perfect-sticky-scrollbar/issues"
+  },
   "keywords": [],
   "main": "index.js",
   "scripts": {
@@ -12,11 +20,12 @@
     "build": "vitepress build",
     "preview": "vitepress preview"
   },
+  "dependencies": {
+    "element-plus": "^2.9.4",
+    "vue": "^3.5.13"
+  },
   "devDependencies": {
     "perfect-sticky-scrollbar": "workspace:*",
     "vitepress": "^1.6.3"
-  },
-  "dependencies": {
-    "element-plus": "^2.9.4"
   }
 }

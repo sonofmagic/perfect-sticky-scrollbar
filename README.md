@@ -2,6 +2,7 @@
 
 ## Projects
 
+- [website](apps/website)
 - [perfect-sticky-scrollbar](packages/perfect-sticky-scrollbar) - tsup(esbuild) build package template
 
 ## Contributing
