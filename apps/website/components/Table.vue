@@ -2,7 +2,6 @@
 import { onMounted } from 'vue'
 // import { vTable } from './vScrollbarTable'
 // import { useStickyBox } from './use-sticky-box'
-import { vTable } from './vScrollbarTable2'
 
 onMounted(() => {
 
@@ -20,7 +19,7 @@ const tableData = Array.from({
 </script>
 
 <template>
-  <ElTable v-table :data="tableData" stripe style="width: 100%">
+  <ElTable class="sticky-x" :data="tableData" stripe style="width: 100%">
     <ElTableColumn prop="date" label="Date" width="180" />
     <ElTableColumn prop="name" label="Name" width="180" />
     <ElTableColumn prop="name" label="Name" width="180" />
@@ -38,7 +37,7 @@ const tableData = Array.from({
 </template>
 
 <style lang="scss">
-.el-table {
+.el-table.sticky-x {
   position: static;
   overflow: initial;
 
@@ -54,7 +53,6 @@ const tableData = Array.from({
         position: sticky;
         bottom: 20px !important;
         height: 0px;
-        // display: block !important;
 
         .el-scrollbar__thumb {
           height: 6px;
