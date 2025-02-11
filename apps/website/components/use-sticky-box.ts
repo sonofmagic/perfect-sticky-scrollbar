@@ -421,7 +421,7 @@ export interface StickyBoxConfig {
 
 export type UseStickyBoxOptions = StickyBoxConfig
 
-export function useStickyBox<T extends HTMLElement>(dom: MaybeRefOrGetter<T>, {
+export function useStickyBox<T extends HTMLElement>(dom: MaybeRefOrGetter<T> | null, {
   offsetTop = 0,
   offsetBottom = 0,
   bottom = false,

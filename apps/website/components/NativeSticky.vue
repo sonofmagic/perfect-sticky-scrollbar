@@ -17,6 +17,15 @@ import StickyBox from './StickyBox.vue'
         </StickyBox>
       </div>
     </div>
+    <div class=" bg-gray-100 rounded-2xl flex items-start gap-6 p-4">
+      <StickyBox :offsetTop="120" :offsetBottom="20">
+        <Sidebar />
+      </StickyBox>
+      <ContentBox />
+      <StickyBox :offsetTop="20" :offsetBottom="20" bottom class="self-end">
+        <Sidebar />
+      </StickyBox>
+    </div>
   </div>
 </template>
 
