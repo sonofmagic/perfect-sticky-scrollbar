@@ -60,6 +60,11 @@ onMounted(() => {
       </el-table>
     </div>
 
+    <div class="relative w-200 h-200">
+      <div class="fixed transform-gpu top-0 ">
+        2
+      </div>
+    </div>
     <div class="mt-100">
       1
     </div>
