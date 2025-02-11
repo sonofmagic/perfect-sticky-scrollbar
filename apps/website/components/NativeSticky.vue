@@ -1,28 +1,23 @@
 <script lang="ts" setup>
-
+import ContentBox from './ContentBox.vue'
+import Sidebar from './Sidebar.vue'
+import StickyBox from './StickyBox.vue'
 </script>
 
 <template>
-  <div class="content">
-    <div class="sticky-element">
-      我是粘性元素
-    </div>
-    <div class="main-content">
-      <!-- 内容区域 -->
-      <p>滚动内容</p>
-    <!-- 可以添加更多内容让页面可滚动 -->
+  <div class="mx-auto p-4">
+    <div class="max-h-60 overflow-auto">
+      <div class=" bg-gray-100 rounded-2xl flex items-start gap-6 p-4">
+        <StickyBox :offsetTop="20" :offsetBottom="20">
+          <Sidebar />
+        </StickyBox>
+        <ContentBox />
+        <StickyBox :offsetTop="20" :offsetBottom="20" bottom class="self-end">
+          <Sidebar />
+        </StickyBox>
+      </div>
     </div>
   </div>
 </template>
 
-<style>
-.sticky-element {
-  position: sticky;
-  top: 0; /* 距离顶部为0 */
-  z-index: 1000; /* 保证粘性元素在页面上层 */
-  background-color: #fff; /* 背景色 */
-  box-shadow: 0 4px 2px -2px gray; /* 添加阴影，使粘性元素在滚动时更明显 */
-  padding: 10px;
-  font-size: 16px;
-}
-</style>
+<style></style>
