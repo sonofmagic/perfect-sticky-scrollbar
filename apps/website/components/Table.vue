@@ -34,6 +34,30 @@ const tableData = Array.from({
   </ElTable>
 </template>
 
-<style>
+<style lang="scss">
+.el-table {
+  position: static;
+  overflow: initial;
 
+  .el-table__body-wrapper {
+    position: static;
+    overflow: initial;
+
+    .el-scrollbar {
+      position: static;
+      overflow: initial;
+
+      .el-scrollbar__bar.is-horizontal {
+        position: sticky;
+        bottom: 20px !important;
+        height: 0px;
+        // display: block !important;
+
+        .el-scrollbar__thumb {
+          height: 6px;
+        }
+      }
+    }
+  }
+}
 </style>
