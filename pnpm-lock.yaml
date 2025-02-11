@@ -135,6 +135,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.5.2)
+      perfect-sticky-scrollbar:
+        specifier: workspace:*
+        version: link:../../packages/perfect-sticky-scrollbar
       postcss:
         specifier: ^8.5.2
         version: 8.5.2
@@ -144,9 +147,6 @@ importers:
       tailwindcss:
         specifier: ^4.0.6
         version: 4.0.6
-      typescript:
-        specifier: ^5.7.3
-        version: 5.7.3
       vite:
         specifier: ^6.1.0
         version: 6.1.0(@types/node@22.13.1)(jiti@2.4.2)(lightningcss@1.29.1)(sass-embedded@1.83.4)(sass@1.84.0)(tsx@4.19.2)(yaml@2.7.0)
