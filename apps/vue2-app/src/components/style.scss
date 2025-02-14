@@ -1,0 +1,20 @@
+.directive-scrollbar-table-wrapper {
+  position: fixed;
+  bottom: 10px;
+  height: 20px;
+  z-index: 999;
+  overflow-x: auto;
+  overflow-y: hidden;
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #e5e5e5;
+    border-radius: 6px;
+    &:hover {
+      background-color: #c1c1c1;
+    }
+  }
+}

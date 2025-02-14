@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import PerfectScrollbar from 'perfect-sticky-scrollbar'
-import { onMounted, ref } from 'vue'
-import 'perfect-sticky-scrollbar/style.css'
+// import PerfectScrollbar from 'perfect-sticky-scrollbar'
+import { ref } from 'vue'
+// import 'perfect-sticky-scrollbar/style.css'
+import { vScrollbarTable } from './scrollbar-table'
 
 const tableRef = ref()
 
@@ -16,22 +17,22 @@ const tableData = Array.from({ length: 100 }).map(() => {
   }
 })
 
-onMounted(() => {
-  const bodyWrapper = tableRef.value.$el.querySelector('.el-table__body-wrapper') as HTMLDivElement
-  // bodyWrapper.style.position = 'relative'
+// onMounted(() => {
+//   const bodyWrapper = tableRef.value.$el.querySelector('.el-table__body-wrapper') as HTMLDivElement
+//   // bodyWrapper.style.position = 'relative'
 
-  if (bodyWrapper) {
-    const ps = new PerfectScrollbar(bodyWrapper)
-    bodyWrapper.style.overflowX = 'hidden'
-    console.log(ps)
-  }
-})
+//   if (bodyWrapper) {
+//     const ps = new PerfectScrollbar(bodyWrapper)
+//     bodyWrapper.style.overflowX = 'hidden'
+//     console.log(ps)
+//   }
+// })
 </script>
 
 <template>
   <div class="container mx-auto">
     <div class="w-160">
-      <el-table ref="tableRef" class="sticky-x" :data="tableData">
+      <el-table ref="tableRef" v-scrollbar-table class="sticky-x" :data="tableData">
         <el-table-column prop="date" label="日期" width="150" />
         <el-table-column prop="name" label="姓名" width="120" />
         <el-table-column prop="province" label="省份" width="120" />
