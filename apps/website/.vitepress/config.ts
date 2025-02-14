@@ -23,6 +23,7 @@ export default defineConfig({
           { text: 'sticky', link: '/examples/sticky' },
           { text: 'table', link: '/examples/table' },
           { text: 'native-sticky', link: '/examples/native-sticky' },
+          { text: 'native-table', link: '/examples/native-table' },
         ],
       },
     ],

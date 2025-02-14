@@ -21,10 +21,7 @@ onMounted(() => {
   // bodyWrapper.style.position = 'relative'
 
   if (bodyWrapper) {
-    const ps = new PerfectScrollbar(bodyWrapper, {
-      stickyXScrollbar: true,
-      stickyXScrollbarOffset: 40,
-    })
+    const ps = new PerfectScrollbar(bodyWrapper)
     bodyWrapper.style.overflowX = 'hidden'
     console.log(ps)
   }

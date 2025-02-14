@@ -129,25 +129,8 @@ function updateCss(element: Element, i: RequiredPerfectScrollbar) {
   else {
     xRailOffset.left = element.scrollLeft
   }
-
   if (i.isScrollbarXUsingBottom) {
-    if (i.settings.stickyXScrollbar) {
-      const rect = element.getBoundingClientRect()
-      const topLimit = window.innerHeight
-        - rect.top
-        - rect.height
-        - i.settings.stickyXScrollbarOffset
-
-      if (topLimit < 0) {
-        xRailOffset.bottom = -topLimit
-      }
-      else {
-        xRailOffset.bottom = i.scrollbarXBottom - roundedScrollTop
-      }
-    }
-    else {
-      xRailOffset.bottom = i.scrollbarXBottom - roundedScrollTop
-    }
+    xRailOffset.bottom = i.scrollbarXBottom - roundedScrollTop
   }
   else {
     xRailOffset.top = i.scrollbarXTop + roundedScrollTop
@@ -170,23 +153,7 @@ function updateCss(element: Element, i: RequiredPerfectScrollbar) {
           - 9
     }
     else {
-      if (i.settings.stickyYScrollbar) {
-        const rect = element.getBoundingClientRect()
-        const rightLimit = window.innerWidth
-          - rect.left
-          - rect.width
-          - i.settings.stickyYScrollbarOffset
-
-        if (rightLimit < 0) {
-          yRailOffset.right = -rightLimit
-        }
-        else {
-          yRailOffset.right = i.scrollbarYRight - element.scrollLeft
-        }
-      }
-      else {
-        yRailOffset.right = i.scrollbarYRight - element.scrollLeft
-      }
+      yRailOffset.right = i.scrollbarYRight - element.scrollLeft
     }
   }
   else {
