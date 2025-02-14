@@ -1,8 +1,6 @@
 .ps__rail-x {
-  position: sticky;
-  bottom: 10px;
-  height: 20px;
-  z-index: 999;
+  height: 8px;
+  z-index: 5;
   overflow-x: auto;
   overflow-y: hidden;
   &::-webkit-scrollbar {

@@ -1,4 +1,5 @@
 import { nextTick } from 'vue'
+import { useStickyBox } from './use-sticky-box'
 import './style.scss'
 
 interface ObserveElement {
@@ -53,6 +54,7 @@ function insertBottomScrollbar(el: HTMLDivElement) {
     observeElement.innerScrollbarElement.style.height = '20px'
     observeElement.scrollbarElement.appendChild(observeElement.innerScrollbarElement)
     el.insertAdjacentElement('afterend', observeElement.scrollbarElement)
+    useStickyBox(observeElement.scrollbarElement, { bottom: true, offsetBottom: 8 })
   }
 }
 

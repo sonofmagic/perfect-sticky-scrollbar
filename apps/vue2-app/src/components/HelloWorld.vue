@@ -32,7 +32,7 @@ const tableData = Array.from({ length: 100 }).map(() => {
 <template>
   <div class="container mx-auto">
     <div class="h-[110vh] bg-amber-50" />
-    <div class="w-160">
+    <div class="w-160 relative">
       <el-table ref="tableRef" v-scrollbar-table class="sticky-x" :data="tableData">
         <el-table-column prop="date" label="日期" width="150" />
         <el-table-column prop="name" label="姓名" width="120" />
