@@ -125,6 +125,9 @@ importers:
       element-ui:
         specifier: ^2.15.14
         version: 2.15.14(vue@2.7.16)
+      subscribe-ui-event:
+        specifier: ^3.0.0
+        version: 3.0.0
       vue:
         specifier: ^2.7.16
         version: 2.7.16
@@ -135,6 +138,9 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.0.6
         version: 4.0.6(vite@6.1.0(@types/node@22.13.1)(jiti@2.4.2)(lightningcss@1.29.1)(sass-embedded@1.83.4)(sass@1.84.0)(tsx@4.19.2)(yaml@2.7.0))
+      '@types/subscribe-ui-event':
+        specifier: ^1.1.8
+        version: 1.1.8
       '@vitejs/plugin-vue2':
         specifier: ^2.3.3
         version: 2.3.3(vite@6.1.0(@types/node@22.13.1)(jiti@2.4.2)(lightningcss@1.29.1)(sass-embedded@1.83.4)(sass@1.84.0)(tsx@4.19.2)(yaml@2.7.0))(vue@2.7.16)

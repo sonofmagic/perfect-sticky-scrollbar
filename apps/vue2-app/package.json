@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "element-ui": "^2.15.14",
+    "subscribe-ui-event": "^3.0.0",
     "vue": "^2.7.16",
     "vue-router": "3"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.6",
+    "@types/subscribe-ui-event": "^1.1.8",
     "@vitejs/plugin-vue2": "^2.3.3",
     "autoprefixer": "^10.4.20",
     "perfect-sticky-scrollbar": "workspace:*",

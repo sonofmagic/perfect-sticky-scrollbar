@@ -1,4 +1,4 @@
-.directive-scrollbar-table-wrapper {
+.ps__rail-x {
   position: sticky;
   bottom: 10px;
   height: 20px;
@@ -17,4 +17,8 @@
       background-color: #c1c1c1;
     }
   }
+}
+.ps__thumb-x {
+  background-color: #999;
+  height: 11px;
 }
