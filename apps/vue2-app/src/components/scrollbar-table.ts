@@ -113,7 +113,7 @@ function handleScrollListener(el: HTMLDivElement) {
     const { scrollbarElement, elTableBodyWrapper, top, bottom, rect } = observeElement
     if (scrollbarElement) {
       if ((scrollY + innerHeight >= rect.bottom + bottom) || (window.scrollY + innerHeight <= (rect.top + top))) { // 展示
-        scrollbarElement.style.display = 'none'
+        // scrollbarElement.style.display = 'none'
       }
       else {
         observeElement!.scrollbarElement!.style.display = 'block'
@@ -144,10 +144,10 @@ function rootScrollListener(el: HTMLDivElement) {
       bottom: ((rect?.bottom || 0) + window.scrollY),
     }
     if ((rect?.top || 0) >= window.innerHeight || (rect?.bottom || 0) <= window.innerHeight) {
-      scrollbarElement!.style.display = 'none'
+      // scrollbarElement!.style.display = 'none'
     }
     else {
-      scrollbarElement!.style.display = 'block'
+      // scrollbarElement!.style.display = 'block'
     }
     observeElement.handleScrollbarListener = throttle(() => handleScrollbarListener(el), 100)
     scrollbarElement!.addEventListener('scroll', observeElement.handleScrollbarListener!)
